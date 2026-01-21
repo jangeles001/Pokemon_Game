@@ -15,18 +15,3 @@ export function shuffleArray(arr: Array<Pokemon>): Array<Pokemon> {
 
   return arr;
 }
-
-/**
- * Calculate total XP of a hand
- *
- * @param {*} arr
- * @returns number
- */
-export function calculateHandXp(arr: Array<Pokemon>): number {
-  let totalXp = 0;
-  for (const item of arr) {
-    totalXp += item.base_experience;
-  }
-
-  return totalXp;
-}
