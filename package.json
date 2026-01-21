@@ -2,7 +2,7 @@
   "name": "game",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://jangeles001.github.io/Pokemon_Game",
+  "homepage": "https://jangeles001.github.io/Pokemon_Game/",
   "type": "module",
   "scripts": {
     "dev": "vite",

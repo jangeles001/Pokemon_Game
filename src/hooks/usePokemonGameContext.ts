@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { PokemonGameContextType } from "../hooks/usePokemonGame"
+import type { PokemonGameContextType } from "./usePokemonGame"
 
 export const PokemonGameContext = createContext<PokemonGameContextType | undefined>(undefined);
 

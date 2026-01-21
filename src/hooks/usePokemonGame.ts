@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import type { Pokemon } from "../types/pokemon";
+import type { Pokemon } from "../types/pokemon.ts";
 import type { Turn, GameState } from "../types/game.ts"
 import { resolveBattle } from "../utils/resovleBattle.ts"
 import { getCpuMove } from "../utils/getCpuMove.ts"
-import { shuffleArray} from "../utils/gameUtilities";
+import { shuffleArray} from "../utils/gameUtilities.ts";
 
 // Hook takes in an array of pokemon
 export function usePokemonGame(pokemonList: Pokemon[]) {
