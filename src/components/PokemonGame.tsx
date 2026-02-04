@@ -5,12 +5,20 @@ import { usePokemonGameContext } from "../hooks/usePokemonGameContext.ts";
 export function PokemonGame() {
 
  const {
+  loses,
+  wins,
   hand1, hand2, attack, resetGame,
   gameStatus
   } = usePokemonGameContext();
 
+  console.log("poop");
+
   return (
     <div>
+      <div className="flex ml-auto">
+        <p>Wins: {wins}</p>
+        <p>Loses: {loses}</p>
+      </div>
       {gameStatus !== "InProgress" && <GameMessage Message={gameStatus} />}
       <PokemonHand
         handName="Player1"
