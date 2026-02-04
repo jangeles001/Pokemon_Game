@@ -10,9 +10,6 @@ export function PokemonGame() {
   hand1, hand2, attack, resetGame,
   gameStatus
   } = usePokemonGameContext();
-
-  console.log("poop");
-
   return (
     <div>
       <div className="flex ml-auto">
