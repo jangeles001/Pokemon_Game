@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+// versioned package
+package game.v1;
+
+service GameService {
+  rpc ResolveTurn (TurnRequest) returns (GameState);
+}
+
+enum Turn {
+  TURN_UNSPECIFIED = 0;
+  TURN_PLAYER1 = 1;
+  TURN_PLAYER2 = 2;
+  TURN_CPU = 3;
+}
+
+enum GameStatus {
+  GAMESTATUS_UNSPECIFIED = 0;
+  GAMESTATUS_IDLE = 1;
+  GAMESTATUS_ACTIVE = 2;
+}
+
+message TurnRequest {
+  string session_id = 1;
+  string attacker_id = 2;
+  string move_id = 3;
+  string defender_id = 4;
+}
+
+message PokemonState {
+  string id = 1;
+  string name = 2;
+  int32 current_hp = 3;
+  int32 max_hp = 4;
+  bool is_fainted = 5;
+}
+
+message GameState {
+  string session_id = 1;
+  repeated PokemonState player = 2;
+  repeated PokemonState opponent = 3;
+  bool is_game_over = 4;
+  Turn current_turn = 5;
+  string last_action_summary = 6;
+}

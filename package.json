@@ -1,0 +1,25 @@
+{
+  "name": "pokemon_game",
+  "version": "1.0.0",
+  "description": "A fun **Pokémon card game** built with **React** and **TypeScript**. Players select Pokémon to battle against a CPU opponent. The game uses type advantages (like Rock-Paper-Scissors) to determine the winner of each attack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "proto:gen": "npx proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=shared/generated/ proto/v1/game.proto proto/v1/leaderboard.proto"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jangeles001/Pokemon_Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jangeles001/Pokemon_Game/issues"
+  },
+  "homepage": "https://github.com/jangeles001/Pokemon_Game#readme",
+  "devDependencies": {
+    "@grpc/proto-loader": "^0.8.0"
+  }
+}
