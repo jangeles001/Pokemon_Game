@@ -1,0 +1,9 @@
+version: v2
+plugins:
+  - local: protoc-gen-es
+    out: ../shared/generated
+    opt: target=ts
+
+  - local: protoc-gen-connect-query
+    out: ../shared/generated
+    opt: target=ts

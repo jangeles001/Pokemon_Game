@@ -1,36 +1,24 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@connectrpc/connect-query"
 import type { Pokemon } from "../types/pokemon.ts";
-import type { Turn, GameState } from "../types/state.ts"
-import { getCpuMove } from "../utils/getCpuMove.ts"
-import { shuffleArray} from "../utils/gameUtilities.ts";
+import { getState } from "../../../shared/generated/v1/game-GameService_connectquery.ts";
 
 // Hook takes in an array of pokemon
 export function usePokemonGame() {
   // Hands defines the two state of the players hands
-	const [hands, setHands] = useState<{hand1: Pokemon[] | null, hand2:Pokemon[] | null}>(
-    {
-      hand1: null,
-      hand2: null,
-    } 
-  );
-
-  const [turn, setTurn] = useState<Turn>("player1");
-  const [attacker, setAttacker] = useState<Pokemon | null >(null);
-  const [defender, setDefender] = useState<Pokemon | null>(null);
-  const [gameStatus, setGameStatus] = useState<GameState>("InProgress");
-
-  
-
-  useEffect(()=> {
-    
-  })
-  
+	const [hand1, setHand1] = useState<Pokemon[]>([]);
+  const [hand2, setHand2] = useState<Pokemon[]>([]);
+  const gameStateQuery = useQuery(getState, {sessionId: "session-123"});
 
   return {
   isLoading: gameStateQuery.isLoading,
-  isLoading: gameStateMutation.isLoading,
-
-
+  error: gameStateQuery.error,
+  hand1: hands.hand1,
+  hand2: hands.hand2,
+  turn: gameStateQuery.data?.turn || null,
+  attacker: gameStateQuery.data?.attacker || null,
+  defender: gameStateQuery.data?.defender || null,
+  gameStatus: gameStateQuery.data?.gameStatus || null,
   };
 }
 
