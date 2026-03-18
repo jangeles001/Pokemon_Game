@@ -10,8 +10,8 @@
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
     "target": "esnext",
-    "baseUrl": ".",                // <--- ADD THIS
-    "paths": {                     // <--- ADD THIS
+    "baseUrl": ".",                
+    "paths": {                     
       "@shared/*": ["../../shared/*"]
     },
     // For nodejs:
