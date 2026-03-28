@@ -1,30 +1,32 @@
 import { PokemonHand } from "./PokemonHand.tsx"
 import { GameMessage } from "./GameMessage.tsx"
 import { usePokemonGameContext } from "../hooks/usePokemonGameContext.ts";
+import { GameStatus } from "../../../shared/generated/game_pb.ts";
 
 export function PokemonGame() {
 
  const {
-  loses,
-  wins,
-  hand1, hand2, attack, resetGame,
-  gameStatus
+  playerHand,
+  opponentHand,
+  gameStatus,
+  attack,
+  resetGame,
   } = usePokemonGameContext();
   return (
     <div>
       <div className="flex ml-auto">
-        <p>Wins: {wins}</p>
-        <p>Loses: {loses}</p>
+        <p>Wins: {}</p>
+        <p>Loses: {}</p>
       </div>
-      {gameStatus !== "InProgress" && <GameMessage Message={gameStatus} />}
+      {gameStatus !== GameStatus.GAMESTATUS_IDLE && <GameMessage Message={gameStatus} />}
       <PokemonHand
         handName="Player1"
-        pokemonList={hand1}
+        pokemonList={playerHand}
       ></PokemonHand>
       <button className="attack-button" onClick={() => attack()}>Attack</button>
       <PokemonHand
         handName="CPU"
-        pokemonList={hand2}
+        pokemonList={opponentHand}
       ></PokemonHand>
       <button className="reset-button" onClick={resetGame}>Reset Game</button>
     </div>

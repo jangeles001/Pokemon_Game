@@ -1,7 +1,7 @@
-import type { GameState } from "../types/game.ts";
+import type { GameStatus } from "../../../shared/generated/game_pb.ts";
 
 interface GameMessageProps {
-    Message: GameState;
+    Message: GameStatus;
 }
 
 export function GameMessage({ Message }: GameMessageProps){
