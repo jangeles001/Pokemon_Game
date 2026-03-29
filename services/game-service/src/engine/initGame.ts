@@ -1,5 +1,6 @@
-import type { Pokemon } from "../types/pokemon";
-import type { GameState } from "./state";
+import { create } from '@bufbuild/protobuf'
+import type { Pokemon, GameState } from "@shared/generated/game_pb";
+import { GameStateSchema, PokemonSchema, GameStatus, Turn } from "@shared/generated/game_pb";
 import { shuffleArray } from "../utils/gameUtilities";
 
 /**
@@ -9,22 +10,18 @@ import { shuffleArray } from "../utils/gameUtilities";
  */
 
 export function createInitialGameState(
-  pokemonList: Pokemon[]
+  pokemonList: Pokemon[],
+  sessionId: string
 ): GameState {
   const shuffled = shuffleArray([...pokemonList]);
 
-  return {
-    hand1: shuffled.slice(0, 5),
-    hand2: shuffled.slice(5, 10),
-
-    turn: "player1",
-
-    attacker: null,
-    defender: null,
-
-    status: "InProgress",
-
-    wins: 0,
-    losses: 0,
-  };
+  return create(GameStateSchema, {
+    sessionId: sessionId,
+    player: shuffled.slice(0, 5),
+    opponent: shuffled.slice(5, 10),
+    isGameOver: false,
+    currentTurn: Turn.PLAYER1,
+    status: GameStatus.GAMESTATUS_ACTIVE,
+    lastActionSummary: "",
+  }); 
 }
